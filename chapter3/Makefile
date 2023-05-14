@@ -8,7 +8,9 @@ $(TARGETS): %: %.bpf.o
 %.bpf.o: %.bpf.c
 	clang \
 	    -target bpf \
-		-I/usr/include/$(shell uname -m)-linux-gnu \
+		-I/usr/include/x86_64-linux-gnu \
+		-I/home/martin/dev/WSL2-Linux-Kernel/tools/lib/ \
+		-I/home/martin/dev/WSL2-Linux-Kernel/tools/bpf/resolve_btfids/libbpf \
 		-g \
 	    -O2 -o $@ -c $<
 
